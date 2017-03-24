@@ -1,0 +1,65 @@
+{% extends "Bill/base.html" %}
+{% block content %}
+<form method="POST"  autocomplete="on"  class="form-horizontal">{% csrf_token %}
+    <fieldset id="myform">
+
+        <div class="form-group">
+             <label for="name" class="col-lg-3 control-label">Customer Name: </label>
+            <div class="col-lg-4">
+                <input class="form-control input-sm"  id="name" name="name" required="required" placeholder="customer name" type="text">
+            </div>
+        </div>
+
+        <div class="form-group">
+             <label for="mobile1" class="col-lg-3 control-label">Mobile No: </label>
+            <div class="col-lg-4">
+                <input class="form-control input-sm"  id="mobile1" name="mobile1" required="required" placeholder="mobile..." type="number">
+            </div>
+        </div>
+
+        <div class="form-group">
+             <label for="mobile2" class="col-lg-3 control-label">Other Mobile No: </label>
+            <div class="col-lg-4">
+                <input class="form-control input-sm"  id="mobile2" name="mobile2" required="required" placeholder="mobile..." type="number">
+            </div>
+        </div>
+
+        <div class="form-group">
+             <label class="col-lg-3 control-label" >Product Name & Quantity: </label>
+            <div class="col-lg-4">
+                <input class="form-control input-sm"  id="product" name="product" required="required" placeholder="product..." type="text">
+                <input class="form-control input-sm" id="quantity" name="quantity" min="1" required="required" placeholder="quantity..." type="number">
+                <input class="form-control input-sm" id="price" name="price" min="1" required="required" placeholder="price..." type="number">
+            </div>
+            <div class="form-group">
+            <div id="add"></div>
+        </div>
+        </div>
+
+
+    </fieldset>
+
+    <div class="form-group">
+            <div class="control-label col-sm-5">
+                <input class="btn btn-primary" type="button" value="Add More Product" onclick="addnew()" />
+            </div>
+    </div>
+
+    <div class="form-group">
+        <div class="control-label col-sm-4">
+            <input class="btn btn-primary" type="submit" value="Submit" />
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+
+{% block script%}
+
+<script>
+    function addnew(){
+        var string1='<div class="form-group"><div class="col-lg-4"> <input class="form-control input-sm"  id="product" name="product" required="required" placeholder="product..." type="text"> <input class="form-control input-sm" id="quantity" name="quantity" min="1" required="required" placeholder="quantity..." type="number"> <input class="form-control input-sm" id="price" name="price" min="1" required="required" placeholder="price..." type="number"></div></div>'
+        document.getElementById('add').innerHTML+=string1
+    }
+</script>
+{% endblock%}

@@ -1,0 +1,19 @@
+{% load static %}
+<html>
+<head>
+	<title>Base</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %} ">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+</head>
+<body>
+<h1 align="center">The Bill Book</h1>
+<div style="padding:5%;word-wrap:break-word;">
+	{%block content%}
+	{%endblock%}
+</div>
+<div style="padding:5%;word-wrap:break-word;">
+	{%block script%}
+	{%endblock%}
+</div>
+</body>
+</html>
