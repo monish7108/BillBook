@@ -58,11 +58,7 @@ def printBill(request):
     quantity_list = request.POST.getlist('quantity')
     price_list = request.POST.getlist('price')
     total = request.POST.getlist('totalprice')
-    # print(quantity_list)
-    # print(price_list)
-    # print(total)
     filename = str(customer_name)+" "+str(bill_id)+".xlsx"
-    # print(filename)
     workbook = xlsxwriter.Workbook(filename=filename)
     worksheet = workbook.add_worksheet()
     worksheet.write(0,0,"Bill ID")
@@ -87,7 +83,6 @@ def printBill(request):
         worksheet.write(row, col+3, total[i])
         row+=1
 
-    # worksheet.write(row+1, col+3, S)
     workbook.close()
 
     return render(request,"Bill/homepage.html")
