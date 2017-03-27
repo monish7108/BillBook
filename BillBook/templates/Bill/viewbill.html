@@ -1,0 +1,41 @@
+{% extends "Bill/base.html" %}
+{% block content %}
+<form method="POST" action="{% url 'printbill' %}">{% csrf_token %}
+<label for="customer_name" class="col-lg-2 control-label">Bill ID: </label>
+<input class="col-lg-3"  id="bill_id" name="bill_id"  value="{{customer.bill_id}}" type="text" readonly><br><br>
+
+<label for="customer_name" class="col-lg-2 control-label">Customer Name: </label>
+<input class="col-lg-3"  id="customer_name" name="customer_name" value="{{customer.customer_name}}" type="text" readonly><br><br>
+
+<label for="mobile1" class="col-lg-2 control-label">Mobile No: </label>
+<input class="col-lg-3"  id="mobile1" name="mobile1" value="{{customer.mobile_no_1}}" type="text" readonly><br><br>
+
+<label for="mobile2" class="col-lg-2 control-label">Other Mobile No: </label>
+<input class="col-lg-3"  id="mobile2" name="mobile2" value="{{customer.mobile_no_2}}" type="text" readonly><br><br>
+<br>
+<br>
+<table class="table table-striped table-hover ">
+    <thead>
+    <tr class="success">
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Total Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for item in bill%}
+    <tr>
+        <td><input type="text" style="background-color:rgba(0,0,0,0.01);color:white" name="product_name" id="product_name" value="{{item.product_name}}" readonly></td>
+        <td><input type="text" style="background-color:rgba(0,0,0,0.01);color:white" name="quantity" id="quantity" value="{{item.quantity}}" readonly></td>
+        <td><input type="text" style="background-color:rgba(0,0,0,0.01);color:white" name="price" id="price" value="{{item.product_price}}" readonly></td>
+        <td><input type="text" style="background-color:rgba(0,0,0,0.01);color:white" name="totalprice" id="totalprice" value="{{item.total_price}}" readonly></td>
+    </tr>
+    {%endfor%}
+    </tbody>
+</table>
+    <input class="btn btn-success" type="submit" value="Print">
+</form>
+{% endblock %}
+
+

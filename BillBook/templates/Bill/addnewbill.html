@@ -20,20 +20,23 @@
         <div class="form-group">
              <label for="mobile2" class="col-lg-3 control-label">Other Mobile No: </label>
             <div class="col-lg-4">
-                <input class="form-control input-sm"  id="mobile2" name="mobile2" required="required" placeholder="mobile..." type="number">
+                <input class="form-control input-sm"  id="mobile2" name="mobile2"  placeholder="mobile..." type="number">
             </div>
         </div>
 
         <div class="form-group">
              <label class="col-lg-3 control-label" >Product Name & Quantity: </label>
-            <div class="col-lg-4">
+            <div class="col-lg-4" >
                 <input class="form-control input-sm"  id="product" name="product" required="required" placeholder="product..." type="text">
                 <input class="form-control input-sm" id="quantity" name="quantity" min="1" required="required" placeholder="quantity..." type="number">
                 <input class="form-control input-sm" id="price" name="price" min="1" required="required" placeholder="price..." type="number">
             </div>
-            <div class="form-group">
-            <div id="add"></div>
+
         </div>
+        <div class="form-group">
+                <label class="col-lg-3 control-label" ></label>
+            <div class="col-lg-4"  id="add">
+            </div>
         </div>
 
 
@@ -58,7 +61,7 @@
 
 <script>
     function addnew(){
-        var string1='<div class="form-group"><div class="col-lg-4"> <input class="form-control input-sm"  id="product" name="product" required="required" placeholder="product..." type="text"> <input class="form-control input-sm" id="quantity" name="quantity" min="1" required="required" placeholder="quantity..." type="number"> <input class="form-control input-sm" id="price" name="price" min="1" required="required" placeholder="price..." type="number"></div></div>'
+        var string1='<input class="form-control input-sm"  id="product" name="product" required="required" placeholder="product..." type="text"> <input class="form-control input-sm" id="quantity" name="quantity" min="1" required="required" placeholder="quantity..." type="number"> <input class="form-control input-sm" id="price" name="price" min="1" required="required" placeholder="price..." type="number"><br>'
         document.getElementById('add').innerHTML+=string1
     }
 </script>
