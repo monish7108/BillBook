@@ -79,7 +79,7 @@ def printBill(request):
         worksheet.write(row, col+3, total[i])
         row+=1
 
-    worksheet.write(row+1, col+3, S)
+    # worksheet.write(row+1, col+3, S)
     workbook.close()
 
     return HttpResponse("hello")
