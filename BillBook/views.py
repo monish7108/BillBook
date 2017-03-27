@@ -8,6 +8,7 @@ from .models import *
 from django.urls import reverse
 import xlsxwriter
 
+#################################################################################################
 @login_required
 def index(request):
     return render(request,"Bill/homepage.html")
@@ -31,15 +32,22 @@ class AddBill(LoginRequiredMixin,View):
             a = Bill.objects.create(bill_no=bill,product_name = product_list[i],quantity = int(quantity_list[i]),product_price = int(price_list[i]), total_price = int(quantity_list[i])*int(price_list[i]))
         print(bill.bill_id)
         return HttpResponseRedirect(reverse("viewbill",kwargs={"bill_id":bill.bill_id}))
+#################################################################################################
+
 
 class ViewBill(LoginRequiredMixin,View):
 
     def get(self,request,bill_id):
-        print(type(bill_id))
-        print(bill_id)
-        customer = Customer.objects.get(bill_id=bill_id)
-        bill = Bill.objects.filter(bill_no = customer)
-        return render(request, "Bill/viewbill.html", {"customer":customer,"bill":bill})
+        try:
+            customer = Customer.objects.get(bill_id=bill_id)
+            bill = Bill.objects.filter(bill_no = customer)
+        except Exception as e:
+            return HttpResponse("Not Found.")
+        else:
+            return render(request, "Bill/viewbill.html", {"customer":customer,"bill":bill})
+
+#################################################################################################
+
 
 def printBill(request):
     bill_id = request.POST.get('bill_id')
@@ -82,4 +90,6 @@ def printBill(request):
     # worksheet.write(row+1, col+3, S)
     workbook.close()
 
-    return HttpResponse("hello")
+    return render(request,"Bill/homepage.html")
+
+#################################################################################################
