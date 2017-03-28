@@ -1,99 +1,99 @@
 {% extends "Bill/base.html" %}
 {% block content %}
-<form method="POST"  autocomplete="on"  class="form-horizontal">{% csrf_token %}
-    <fieldset id="myform">
+    <form method="POST"  autocomplete="on"  class="form-horizontal">{% csrf_token %}
+        <fieldset id="myform">
+
+            <div class="form-group">
+                 <label for="name" class="col-lg-3 control-label">Customer Name: </label>
+                <div class="col-lg-4">
+                    <input class="form-control input-sm"  id="name" name="name" required="required" placeholder="customer name" type="text">
+                </div>
+            </div>
+
+            <div class="form-group">
+                 <label for="mobile1" class="col-lg-3 control-label">Mobile No: </label>
+                <div class="col-lg-4">
+                    <input class="form-control input-sm"  id="mobile1" name="mobile1" required="required" placeholder="mobile..." type="number">
+                </div>
+            </div>
+
+            <div class="form-group">
+                 <label for="mobile2" class="col-lg-3 control-label">Other Mobile No: </label>
+                <div class="col-lg-4">
+                    <input class="form-control input-sm"  id="mobile2" name="mobile2" required="required" placeholder="mobile..." type="number">
+                </div>
+            </div>
+
+            <div class="form-group">
+                 <label class="col-lg-3 control-label" >Product Name & Quantity: </label>
+                <div class="col-lg-4">
+                    <input class="form-control input-sm"  id="product" name="product" required="required" placeholder="product..." type="text">
+                    <input class="form-control input-sm" id="quantity" name="quantity" min="1" required="required" placeholder="quantity..." type="number">
+                    <input class="form-control input-sm" id="price" name="price" min="1" required="required" placeholder="price..." type="number">
+                </div>
+
+            </div>
+            <div class="form-group" >
+                <label class="col-lg-3 control-label" ></label>
+                <div class="col-lg-4" id="add">
+
+                </div>
+                </div>
+
+        </fieldset>
 
         <div class="form-group">
-             <label for="name" class="col-lg-3 control-label">Customer Name: </label>
-            <div class="col-lg-4">
-                <input class="form-control input-sm"  id="name" name="name" required="required" placeholder="customer name" type="text">
+            <div class="control-label col-sm-5">
+                <input class="btn btn-primary" type="button" value="Add More Product" onclick="addnew()" />
             </div>
         </div>
 
         <div class="form-group">
-             <label for="mobile1" class="col-lg-3 control-label">Mobile No: </label>
-            <div class="col-lg-4">
-                <input class="form-control input-sm"  id="mobile1" name="mobile1" required="required" placeholder="mobile..." type="number">
+            <div class="control-label col-sm-4">
+                <input class="btn btn-primary" type="submit" value="Submit" />
             </div>
         </div>
-
-        <div class="form-group">
-             <label for="mobile2" class="col-lg-3 control-label">Other Mobile No: </label>
-            <div class="col-lg-4">
-                <input class="form-control input-sm"  id="mobile2" name="mobile2" required="required" placeholder="mobile..." type="number">
-            </div>
-        </div>
-
-        <div class="form-group">
-             <label class="col-lg-3 control-label" >Product Name & Quantity: </label>
-            <div class="col-lg-4">
-                <input class="form-control input-sm"  id="product" name="product" required="required" placeholder="product..." type="text">
-                <input class="form-control input-sm" id="quantity" name="quantity" min="1" required="required" placeholder="quantity..." type="number">
-                <input class="form-control input-sm" id="price" name="price" min="1" required="required" placeholder="price..." type="number">
-            </div>
-
-        </div>
-        <div class="form-group" id="label1">
-            <div class="col-lg-4" id="add">
-
-            </div>
-            </div>
-
-    </fieldset>
-
-    <div class="form-group">
-        <div class="control-label col-sm-5">
-            <input class="btn btn-primary" type="button" value="Add More Product" onclick="addnew()" />
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="control-label col-sm-4">
-            <input class="btn btn-primary" type="submit" value="Submit" />
-        </div>
-    </div>
-</form>
-{% endblock %}
+    </form>
+    {% endblock %}
 
 
-{% block script%}
+    {% block script%}
 
-<script>
-    function addnew(){
-        var label = document.createElement("label");
-        label.setAttribute("class", "col-lg-3 control-label");
-        label.innerHTML = "Product Name & Quantity: ";
-        label1.appendChild(label);
-
-        var input = document.createElement("input");
-        input.type = "text";
-        input.name = "product";
-        input.id = "product";
-        input.setAttribute("class", "form-control input-sm");
-        input.required="required";
-        input.placeholder="product...";
-        add.appendChild(input);
+    <script>
+        function addnew(){
 
 
-        var input = document.createElement("input");
-        input.type = "number";
-        input.name = "quantity";
-        input.setAttribute("class", "form-control input-sm");
-        input.id = "quantity";
-        input.required="required";
-        input.placeholder="quantity..."
-        add.appendChild(input);
+
+            var input = document.createElement("input");
+            input.type = "text";
+            input.name = "product";
+            input.id = "product";
+            input.setAttribute("class", "form-control input-sm");
+            input.required="required";
+            input.placeholder="product...";
+            add.appendChild(input);
 
 
-        var input = document.createElement("input");
-        input.type = "number";
-        input.name = "price";
-        input.setAttribute("class", "form-control input-sm");
-        input.id = "price";
-        input.required="required";
-        input.placeholder="price...";
-        add.appendChild(input);
+            var input = document.createElement("input");
+            input.type = "number";
+            input.name = "quantity";
+            input.setAttribute("class", "form-control input-sm");
+            input.id = "quantity";
+            input.required="required";
+            input.placeholder="quantity..."
+            add.appendChild(input);
 
-    }
-</script>
+
+            var input = document.createElement("input");
+            input.type = "number";
+            input.name = "price";
+            input.setAttribute("class", "form-control input-sm");
+            input.id = "price";
+            input.required="required";
+            input.placeholder="price...";
+            add.appendChild(input);
+            add.appendChild(document.createElement("br"))
+
+        }
+    </script>
 {% endblock%}
