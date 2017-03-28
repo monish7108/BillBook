@@ -31,18 +31,20 @@
                 <input class="form-control input-sm" id="quantity" name="quantity" min="1" required="required" placeholder="quantity..." type="number">
                 <input class="form-control input-sm" id="price" name="price" min="1" required="required" placeholder="price..." type="number">
             </div>
-            <div class="form-group">
-            <div id="add"></div>
-        </div>
-        </div>
 
+        </div>
+        <div class="form-group" id="label1">
+            <div class="col-lg-4" id="add">
+
+            </div>
+            </div>
 
     </fieldset>
 
     <div class="form-group">
-            <div class="control-label col-sm-5">
-                <input class="btn btn-primary" type="button" value="Add More Product" onclick="addnew()" />
-            </div>
+        <div class="control-label col-sm-5">
+            <input class="btn btn-primary" type="button" value="Add More Product" onclick="addnew()" />
+        </div>
     </div>
 
     <div class="form-group">
@@ -58,8 +60,40 @@
 
 <script>
     function addnew(){
-        var string1='<div class="form-group"><div class="col-lg-4"> <input class="form-control input-sm"  id="product" name="product" required="required" placeholder="product..." type="text"> <input class="form-control input-sm" id="quantity" name="quantity" min="1" required="required" placeholder="quantity..." type="number"> <input class="form-control input-sm" id="price" name="price" min="1" required="required" placeholder="price..." type="number"></div></div>'
-        document.getElementById('add').innerHTML+=string1
+        var label = document.createElement("label");
+        label.setAttribute("class", "col-lg-3 control-label");
+        label.innerHTML = "Product Name & Quantity: ";
+        label1.appendChild(label);
+
+        var input = document.createElement("input");
+        input.type = "text";
+        input.name = "product";
+        input.id = "product";
+        input.setAttribute("class", "form-control input-sm");
+        input.required="required";
+        input.placeholder="product...";
+        add.appendChild(input);
+
+
+        var input = document.createElement("input");
+        input.type = "number";
+        input.name = "quantity";
+        input.setAttribute("class", "form-control input-sm");
+        input.id = "quantity";
+        input.required="required";
+        input.placeholder="quantity..."
+        add.appendChild(input);
+
+
+        var input = document.createElement("input");
+        input.type = "number";
+        input.name = "price";
+        input.setAttribute("class", "form-control input-sm");
+        input.id = "price";
+        input.required="required";
+        input.placeholder="price...";
+        add.appendChild(input);
+
     }
 </script>
 {% endblock%}

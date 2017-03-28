@@ -7,7 +7,7 @@ class Customer(models.Model):
     mobile_no_2 = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
-        return self.customer_name
+        return self.customer_name + " " + str(self.bill_id)
 
 class Bill(models.Model):
     bill_no = models.ForeignKey(Customer, on_delete=models.CASCADE)
